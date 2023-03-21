@@ -46,7 +46,7 @@ async function login(req, res) {
       "secret123"
     );
 
-    return res.status(200).send({ status: true, data: token });
+    return res.status(200).send({ user: user.name, data: token });
   } else {
     return res.json({ status: false, user: false });
   }

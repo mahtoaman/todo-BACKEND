@@ -1,8 +1,10 @@
+const { text } = require("express");
 const jwt = require("jsonwebtoken");
 
 const authorization = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
+
     if (!token)
       return res
         .status(400)
@@ -18,6 +20,7 @@ const authorization = async (req, res, next) => {
       }
       console.log(decodedToken)
       req.headers.decodedToken = decodedToken;
+      
       next();
     });
   } catch (err) {
